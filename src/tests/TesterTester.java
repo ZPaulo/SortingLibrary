@@ -45,6 +45,10 @@ public class TesterTester {
 		int a6[] = { 1, 2, 3, 4, 5, 5 };
 
 		assertFalse(SortTester.sameArray(a5, a6));
+		
+		int a7[] = {};
+		int a8[] = a7.clone();
+		assertTrue(SortTester.sameArray(a7, a8));
 	}
 
 }
