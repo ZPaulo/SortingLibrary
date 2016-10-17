@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class InsertionTestTsTests {
+public class InsertionTestTests {
 
 	@Test
 	public void testOrdered() {
