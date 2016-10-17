@@ -1,6 +1,6 @@
 package sort;
 
-public abstract class InsertionSort {
+public abstract class Insertion {
 	public static void sort(int[] a) {
 		for (int i = 1; i < a.length; i++) {
 			int j=i;

@@ -6,7 +6,7 @@ public abstract class Sort {
 	
 	public static void sort(int[] array){
 		if(array.length < SIZE)
-			InsertionSort.sort(array);
+			Insertion.sort(array);
 		else
 			Merge.sort(array);
 	}
