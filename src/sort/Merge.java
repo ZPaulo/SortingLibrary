@@ -1,6 +1,6 @@
 package sort;
 
-public class Merge {
+public abstract class Merge {
 
 	private static void topDownSplitMerge(int[] B, int startI, int endI, int[] A) {
 		if (endI - startI < 2) // if run size == 1

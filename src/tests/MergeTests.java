@@ -17,11 +17,21 @@ public class MergeTests extends SortTester {
 		int a2[] = a1.clone();
 		Merge.sort(a1);
 		
-		for (int i : a1) {
-			System.out.println(i);
-		}
 		assertTrue(ordered(a1));
 		assertTrue(sameArray(a1, a2));
+		
+		int a3[] = {1, 2, 3, 4 ,5};
+		Merge.sort(a3);
+		
+		assertTrue(ordered(a3));
+		assertTrue(sameArray(a1, a3));
+		
+		int a4[] = {};
+		int a5[] = a4.clone();
+		Merge.sort(a4);
+		
+		assertTrue(ordered(a4));
+		assertTrue(sameArray(a4, a5));
 	}
 
 }
