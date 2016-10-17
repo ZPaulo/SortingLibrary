@@ -20,9 +20,6 @@ public class InsertionTests extends SortTester {
 		int a2[] = a1.clone();
 		InsertionSort.sort(a1);
 		
-		for (int i : a1) {
-			System.out.println(i);
-		}
 		assertTrue(ordered(a1));
 		assertTrue(sameArray(a1, a2));
 
