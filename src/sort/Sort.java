@@ -10,4 +10,16 @@ public abstract class Sort {
 		else
 			Merge.sort(array);
 	}
+	
+
+	
+	public static void main(String[] args){
+		int[] a1 = new int[]{3,4,5,6,2,2};
+		int[] a2 = a1.clone();
+		
+		//int[] a3 = Merge.sort(a1,true);
+		Merge.sort(a1);
+		
+		Insertion.sort(a2);
+	}
 }

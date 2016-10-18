@@ -2,40 +2,61 @@ package sort;
 
 public abstract class Merge {
 
-	private static void topDownSplitMerge(int[] B, int startI, int endI, int[] A) {
-		if (endI - startI < 2) // if run size == 1
-			return; // consider it sorted
-		// split the run longer than 1 item into halves
-		int middleI = (startI + endI) / 2;
+	private static int[] posA;
 
-		// recursively sort both runs from array A[] into B[]
-		topDownSplitMerge(A, startI, middleI, B); // sort the left run
-		topDownSplitMerge(A, middleI, endI, B); // sort the right run
-
-		// merge the resulting runs from array B[] into A[]
-		topDownMerge(B, startI, endI, middleI, A);
-	}
-
-	private static void topDownMerge(int[] A, int startI, int endI, int middleI, int[] B) {
-		int i = startI, j = middleI;
-
-		for (int k = startI; k < endI; k++) {
+	// Left run is A[iLeft :iRight-1].
+	// Right run is A[iRight:iEnd-1 ].
+	private static void BottomUpMerge(int A[], int iLeft, int iRight, int iEnd, int B[]){
+		int i = iLeft, j = iRight;
+		// While there are elements in the left or right runs...
+		for (int k = iLeft; k < iEnd; k++) {
 			// If left run head exists and is <= existing right run head.
-			if (i < middleI && (j >= endI || A[i] <= A[j])) {
+			if (i < iRight && (j >= iEnd || A[i] <= A[j])) {
 				B[k] = A[i];
+				if(posA != null)
+					posA[i] = k;
 				i = i + 1;
 			} else {
 				B[k] = A[j];
-				j = j + 1;
+				if(posA != null)
+					posA[j] = k;
+				j = j + 1;    
 			}
-		}
+		} 
 	}
 
 	public static void sort(int[] numbers) {
+		sort(numbers, false);
+	}
 
-		int[] temp = new int[numbers.length];
-		System.arraycopy(numbers, 0, temp, 0, numbers.length);
+	public static int[] sort(int[] numbers, boolean positions) {
 
-		topDownSplitMerge(temp, 0, numbers.length, numbers);
+		int size = numbers.length;
+		int[] temp = new int[size];
+		if(positions)
+			posA = new int[size];
+
+		// Each 1-element run in A is already "sorted".
+		// Make successively longer sorted runs of length 2, 4, 8, 16... until
+		// whole array is sorted.
+		for (int width = 1; width < size; width = 2 * width) {
+			// Array A is full of runs of length width.
+			for (int i = 0; i < size; i = i + 2 * width) {
+				// Merge two runs: A[i:i+width-1] and A[i+width:i+2*width-1] to
+				// B[]
+				// or copy A[i:n-1] to B[] ( if(i+width >= n) )
+				BottomUpMerge(numbers, i, i + width < size ? i + width : size,
+						i + 2 * width < size ? i + 2 * width : size, temp);
+			}
+			// Now work array B is full of runs of length 2*width.
+			// Copy array B to array A for next iteration.
+			// A more efficient implementation would swap the roles of A and B.
+			System.arraycopy(temp, 0, numbers, 0, size);
+			// Now array A is full of runs of length 2*width.
+		}
+		if(positions)
+			return posA;
+		else
+			return null;
 	}
 }
