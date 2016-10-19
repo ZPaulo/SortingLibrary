@@ -9,6 +9,15 @@ public abstract class SortTester {
 				return false;
 		return true;
 	}
+	
+	static boolean positions(int[] original, int[] sorted, int[] posA){
+		for (int i = 0; i < original.length; i++) {
+			if(sorted[i] != original[posA[i]])
+				return false;
+		}
+		
+		return true;
+	}
 
 	static boolean sameArray(int[] a1, int[] a2) {
 		if (a1.length != a2.length)

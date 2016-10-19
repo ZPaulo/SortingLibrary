@@ -14,11 +14,13 @@ public abstract class Sort {
 
 	
 	public static void main(String[] args){
-		int[] a1 = new int[]{3,4,5,6,2,2};
+		int[] a1 = new int[]{5,4,3,2,1,0};
 		int[] a2 = a1.clone();
 		
-		//int[] a3 = Merge.sort(a1,true);
-		Merge.sort(a1);
+		int[] a3 = Merge.sort(a1,true);
+		//Merge.sort(a1);
+		for(int i : a3)
+			System.out.println(i);
 		
 		Insertion.sort(a2);
 	}
