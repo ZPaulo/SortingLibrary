@@ -1,5 +1,9 @@
 package sort;
 
+/**
+ * 
+ *
+ */
 public abstract class Merge {
 
 	// Left run is A[iLeft :iRight-1].
@@ -23,10 +27,23 @@ public abstract class Merge {
 		} 
 	}
 
+	/**
+	 * Sorts an integer array numbers using merge sort
+	 * Uses {@link sort(int[],boolean)} with boolean = false
+	 * @see sort(int[],boolean)
+	 * @param numbers array to be sorted
+	 */
 	public static void sort(int[] numbers) {
 		sort(numbers, false);
 	}
 
+	/**
+	 * Sorts an integer array numbers using merge sort. 
+	 * Optionally returns an array with the original element positions of the sorted array
+	 * @param numbers array to be sorted
+	 * @param positions if true returns element positions, else returns null
+	 * @return null or element positions before sorting
+	 */
 	public static int[] sort(int[] numbers, boolean positions) {
 
 		int size = numbers.length;

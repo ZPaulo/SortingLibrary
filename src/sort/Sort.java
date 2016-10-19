@@ -2,26 +2,32 @@ package sort;
 
 public abstract class Sort {
 	
-	static final int SIZE = 20;
+	static final int SIZE = 8;
 	
+	/**
+	 * Sorts an integer array using either insertion sort or merge sort, depending on the array size
+	 * Uses {@link sort(int[],boolean)} with boolean = false
+	 * @see sort(int[],boolean)
+	 * @param array array to be sorted
+	 */
 	public static void sort(int[] array){
-		if(array.length < SIZE)
-			Insertion.sort(array);
-		else
-			Merge.sort(array);
+		sort(array,false);
 	}
 	
-
-	
-	public static void main(String[] args){
-		int[] a1 = new int[]{5,4,3,2,1,0};
-		int[] a2 = a1.clone();
-		
-		int[] a3 = Merge.sort(a1,true);
-		//Merge.sort(a1);
-		for(int i : a3)
-			System.out.println(i);
-		
-		Insertion.sort(a2);
+	/**
+	 * Sorts an integer array using either insertion sort or merge sort, depending on the array size
+	 * Optionally returns an array with the original element positions of the sorted array
+	 * @param numbers array to be sorted
+	 * @param positions if true returns element positions, else returns null
+	 * @return null or element positions before sorting
+	 */
+	public static int[] sort(int[] array, boolean positions){
+		if(positions){
+			if(array.length < SIZE)
+				return Insertion.sort(array, true);
+			else
+				return Merge.sort(array, true);
+			
+		}
 	}
 }
