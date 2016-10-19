@@ -1,8 +1,7 @@
 package sort;
 
 /**
- * 
- *
+ * Implements method capable of sorting integer arrays using insertion sort.
  */
 public abstract class Merge {
 
@@ -49,7 +48,6 @@ public abstract class Merge {
 		int size = numbers.length;
 		int[] temp = new int[size];
 		int[] posA = null, tempA = null;
-		
 		if(positions){
 			posA = new int[size];
 			tempA=new int[size];
@@ -79,9 +77,6 @@ public abstract class Merge {
 			if(positions)
 				System.arraycopy(tempA, 0, posA, 0, size);
 		}
-		if(positions)
-			return posA;
-		else
-			return null;
+		return posA;
 	}
 }
