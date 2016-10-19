@@ -31,9 +31,11 @@ public abstract class Merge {
 
 		int size = numbers.length;
 		int[] temp = new int[size];
+		int[] posA = null, tempA = null;
+		
 		if(positions){
-			int[] posA = new int[size];
-			int[] tempA=new int[size];
+			posA = new int[size];
+			tempA=new int[size];
 			for(int i = 0; i < size; i++)
 				posA[i] = i;
 		}
