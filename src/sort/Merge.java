@@ -2,11 +2,9 @@ package sort;
 
 public abstract class Merge {
 
-	private static int[] posA, tempA;
-
 	// Left run is A[iLeft :iRight-1].
 	// Right run is A[iRight:iEnd-1 ].
-	private static void BottomUpMerge(int A[], int iLeft, int iRight, int iEnd, int B[]){
+	private static void BottomUpMerge(int A[], int iLeft, int iRight, int iEnd, int B[], int[] posA, int[] tempA){
 		int i = iLeft, j = iRight;
 		// While there are elements in the left or right runs...
 		for (int k = iLeft; k < iEnd; k++) {
@@ -34,8 +32,8 @@ public abstract class Merge {
 		int size = numbers.length;
 		int[] temp = new int[size];
 		if(positions){
-			posA = new int[size];
-			tempA=new int[size];
+			int[] posA = new int[size];
+			int[] tempA=new int[size];
 			for(int i = 0; i < size; i++)
 				posA[i] = i;
 		}
@@ -49,7 +47,10 @@ public abstract class Merge {
 				// Merge two runs: A[i:i+width-1] and A[i+width:i+2*width-1] to
 				// B[]
 				// or copy A[i:n-1] to B[] ( if(i+width >= n) )
-				BottomUpMerge(numbers, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp);
+				if(positions)
+					BottomUpMerge(numbers, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, posA, tempA);
+				else
+					BottomUpMerge(numbers, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, null, null);
 			}
 			// Now work array B is full of runs of length 2*width.
 			// Copy array B to array A for next iteration.
