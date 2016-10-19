@@ -41,15 +41,15 @@ public abstract class Insertion {
 				positionsArray[i] = i;
 		}
 		for (i = 1; i < array.length; i++) {
-			int j = i;
-			while (j > 0 && array[j - 1] > array[j]) {
+			for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
+				
 				int temp = array[j];
 				array[j] = array[j - 1];
-				array[j] = temp;
+				array[j-1] = temp;
 				if (positions) {
 					int ptemp = positionsArray[j];
 					positionsArray[j] = positionsArray[j - 1];
-					positionsArray[--j] = ptemp;
+					positionsArray[j-1] = ptemp;
 				}
 			}
 		}
