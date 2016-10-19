@@ -41,11 +41,14 @@ public class MergeTests extends SortTester {
 	public void testSortIntArrayBoolean() {
 		int a1[] = { 5,5, 4, 3, 2, 1 };
 		int a2[] = a1.clone();
+		int a9[] = a1.clone();
 		int a6[] = Merge.sort(a1, true);
+		
 		
 		assertTrue(ordered(a1));
 		assertTrue(sameArray(a1, a2));
 		assertTrue(positions(a2, a1, a6));
+		assertTrue(Merge.sort(a9,false) == null);
 		
 		int a3[] = {1, 2, 3, 4 ,5,5};
 		int a7[] = Merge.sort(a3, true);

@@ -52,12 +52,14 @@ public class SortTests extends SortTester {
 		
 		int a3[] = {1, 2, 3, 4 ,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2};
 		int a4[] = a3.clone();
+		int a10[] = a3.clone();
 		int a8[] = Sort.sort(a3, true);
 		
 		
 		assertTrue(ordered(a3));
 		assertTrue(sameArray(a4, a3));
 		assertTrue(positions(a4, a3, a8));
+		assertTrue(Merge.sort(a10,false) == null);
 		
 		int a5[] = {};
 		int a6[] = a5.clone();
