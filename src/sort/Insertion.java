@@ -1,8 +1,7 @@
 package sort;
 
 /**
- * 
- *
+ * Implements method capable of sorting integer arrays using insertion sort.
  */
 public abstract class Insertion {
 	/**
@@ -34,12 +33,12 @@ public abstract class Insertion {
 	 *         {@code null}
 	 */
 	public static int[] sort(int[] array, boolean positions) {
-		int[] p = null;
+		int[] positionsArray = null;
 		int i = 0;
 		if (positions) {
-			p = new int[array.length];
-			for (i = 0; i < p.length; i++)
-				p[i] = i;
+			positionsArray = new int[array.length];
+			for (i = 0; i < positionsArray.length; i++)
+				positionsArray[i] = i;
 		}
 		for (i = 1; i < array.length; i++) {
 			int j = i;
@@ -48,13 +47,13 @@ public abstract class Insertion {
 				array[j] = array[j - 1];
 				array[j] = temp;
 				if (positions) {
-					int ptemp = p[j];
-					p[j] = p[j - 1];
-					p[--j] = ptemp;
+					int ptemp = positionsArray[j];
+					positionsArray[j] = positionsArray[j - 1];
+					positionsArray[--j] = ptemp;
 				}
 			}
 		}
-		return p;
+		return positionsArray;
 
 	}
 
