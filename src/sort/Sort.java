@@ -1,7 +1,8 @@
 package sort;
 
 /**
- *  Implements method capable of sorting integer arrays using insertion or merge sort.
+ * Implements method capable of sorting integer arrays using insertion or merge
+ * sort.
  */
 public abstract class Sort {
 

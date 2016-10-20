@@ -3,19 +3,20 @@ package tests;
 import java.util.HashMap;
 
 public abstract class SortTester {
+
 	static boolean ordered(int[] a) {
 		for (int i = 1; i < a.length; i++)
 			if (a[i - 1] > a[i])
 				return false;
 		return true;
 	}
-	
-	static boolean positions(int[] original, int[] sorted, int[] posA){
+
+	static boolean positions(int[] original, int[] sorted, int[] posA) {
 		for (int i = 0; i < original.length; i++) {
-			if(sorted[i] != original[posA[i]])
+			if (sorted[i] != original[posA[i]])
 				return false;
 		}
-		
+
 		return true;
 	}
 
