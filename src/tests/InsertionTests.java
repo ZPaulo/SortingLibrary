@@ -33,12 +33,7 @@ public class InsertionTests extends SortTester {
 		assertTrue(sameArray(a5, a6));
 	}
 
-	/**
-	 * Test method for {@link sort.Insertion#sort(int[],boolean)}.
-	 */
-	@Test
-	public void testSortIntArrayBoolean() {
-		int original[] = { 5, 4, 3, 2, 1 };
+	void testSorting(int[] original) {
 		int sorted[] = original.clone();
 		int temp[] = original.clone();
 		assertTrue(Insertion.sort(temp, false) == null);
@@ -49,25 +44,17 @@ public class InsertionTests extends SortTester {
 		assertTrue(sameArray(sorted, original));
 		assertTrue(positions(original, sorted, positionsArray));
 
-		original = new int[] {};
-		sorted = original.clone();
-		temp = original.clone();
-		assertTrue(Insertion.sort(temp, false) == null);
-		positionsArray = Insertion.sort(sorted, true);
-		assertTrue(ordered(sorted));
-		assertTrue(sameArray(sorted, original));
-		assertTrue(positions(original, sorted, positionsArray));
+	}
 
-		original = new int[] { 1, 2, 3, 4, 5 };
-		sorted = original.clone();
-		temp = original.clone();
-		assertTrue(Insertion.sort(temp, false) == null);
-		assertTrue(ordered(temp));
-		assertTrue(sameArray(temp, original));
-		positionsArray = Insertion.sort(sorted, true);
-		assertTrue(ordered(sorted));
-		assertTrue(sameArray(sorted, original));
-		assertTrue(positions(original, sorted, positionsArray));
+	/**
+	 * Test method for {@link sort.Insertion#sort(int[],boolean)}.
+	 */
+	@Test
+	public void testSortIntArrayBoolean() {
+		testSorting(new int[] { 5, 4, 3, 2, 1 });
+		testSorting(new int[] {});
+		testSorting(new int[] { 1, 2, 3, 4, 5 });
+		testSorting(new int[] { 1, 2, 3, 4, 4, 5 });
 	}
 
 }
