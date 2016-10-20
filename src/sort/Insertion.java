@@ -6,10 +6,10 @@ package sort;
 public abstract class Insertion {
 	/**
 	 * Sorts an array using the insertion sort algorithm. Uses
-	 * {@link sort(int[],boolean) sort(array,positions)} by setting
+	 * {@link #sort(int[],boolean) sort(array,positions)} by setting
 	 * {@code positions} as {@code false}
 	 * 
-	 * @see sort(int[],boolean)
+	 * @see #sort(int[],boolean)
 	 * @param array
 	 *            array of integers to be sorted
 	 */

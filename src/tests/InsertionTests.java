@@ -9,6 +9,17 @@ import sort.Insertion;
 
 public class InsertionTests extends SortTester {
 
+	/**
+	 * Test sorting the {@link sort.Insertion#sort(int[])} if {@code positions}
+	 * is {@code false} or {@link sort.Insertion#sort(int[],boolean)} if
+	 * {@code positions} is {@code true}.
+	 * 
+	 * @param original
+	 *            array to be tested.
+	 * @param positions
+	 *            if {@code true} it tests the positions of the elements in the
+	 *            sorted array, otherwise it doesn't
+	 */
 	void testSorting(int[] original, boolean positions) {
 		int sorted[] = original.clone();
 		int temp[] = original.clone();

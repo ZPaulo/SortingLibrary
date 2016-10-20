@@ -28,8 +28,8 @@ public abstract class Merge {
 
 	/**
 	 * Sorts an integer array numbers using merge sort
-	 * Uses {@link sort(int[],boolean)} with boolean = false
-	 * @see sort(int[],boolean)
+	 * Uses {@link #sort(int[],boolean)} with boolean = false
+	 * @see #sort(int[],boolean)
 	 * @param array array to be sorted
 	 */
 	public static void sort(int[] array) {
