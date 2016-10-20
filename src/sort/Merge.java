@@ -30,29 +30,29 @@ public abstract class Merge {
 	 * Sorts an integer array numbers using merge sort
 	 * Uses {@link sort(int[],boolean)} with boolean = false
 	 * @see sort(int[],boolean)
-	 * @param numbers array to be sorted
+	 * @param array array to be sorted
 	 */
-	public static void sort(int[] numbers) {
-		sort(numbers, false);
+	public static void sort(int[] array) {
+		sort(array, false);
 	}
 
 	/**
 	 * Sorts an integer array numbers using merge sort. 
 	 * Optionally returns an array with the original element positions of the sorted array
-	 * @param numbers array to be sorted
+	 * @param array array to be sorted
 	 * @param positions if true returns element positions, else returns null
 	 * @return null or element positions before sorting
 	 */
-	public static int[] sort(int[] numbers, boolean positions) {
+	public static int[] sort(int[] array, boolean positions) {
 
-		int size = numbers.length;
+		int size = array.length;
 		int[] temp = new int[size];
-		int[] posA = null, tempA = null;
+		int[] positionsArray = null, tempPositionsArray = null;
 		if(positions){
-			posA = new int[size];
-			tempA=new int[size];
+			positionsArray = new int[size];
+			tempPositionsArray=new int[size];
 			for(int i = 0; i < size; i++)
-				posA[i] = i;
+				positionsArray[i] = i;
 		}
 
 		// Each 1-element run in A is already "sorted".
@@ -65,18 +65,18 @@ public abstract class Merge {
 				// B[]
 				// or copy A[i:n-1] to B[] ( if(i+width >= n) )
 				if(positions)
-					BottomUpMerge(numbers, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, posA, tempA);
+					BottomUpMerge(array, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, positionsArray, tempPositionsArray);
 				else
-					BottomUpMerge(numbers, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, null, null);
+					BottomUpMerge(array, i, i + width < size ? i + width : size, i + 2 * width < size ? i + 2 * width : size, temp, null, null);
 			}
 			// Now work array B is full of runs of length 2*width.
 			// Copy array B to array A for next iteration.
 			// A more efficient implementation would swap the roles of A and B.
-			System.arraycopy(temp, 0, numbers, 0, size);
+			System.arraycopy(temp, 0, array, 0, size);
 			// Now array A is full of runs of length 2*width.
 			if(positions)
-				System.arraycopy(tempA, 0, posA, 0, size);
+				System.arraycopy(tempPositionsArray, 0, positionsArray, 0, size);
 		}
-		return posA;
+		return positionsArray;
 	}
 }
