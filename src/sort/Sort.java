@@ -10,10 +10,10 @@ public abstract class Sort {
 
 	/**
 	 * Sorts an integer array using either insertion sort or merge sort,
-	 * depending on the array size Uses {@link sort(int[],boolean)} with boolean
+	 * depending on the array size Uses {@link #sort(int[],boolean)} with boolean
 	 * = false
 	 * 
-	 * @see sort(int[],boolean)
+	 * @see #sort(int[],boolean)
 	 * @param array
 	 *            array to be sorted
 	 */
@@ -26,11 +26,11 @@ public abstract class Sort {
 	 * depending on the array size Optionally returns an array with the original
 	 * element positions of the sorted array
 	 * 
-	 * @param numbers
+	 * @param array
 	 *            array to be sorted
 	 * @param positions
 	 *            if true returns element positions, else returns null
-	 * @return null or element positions before sorting
+	 * @return {@code null} if {@code positions} is {@code false} or element positions before sorting if {@code positions} is {@code true}
 	 */
 	public static int[] sort(int[] array, boolean positions) {
 		if (array.length < SIZE)
